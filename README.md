@@ -35,8 +35,8 @@ The goal of this project is to build a simple HTTP server capable of:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/simple-python-http-server.git
-   cd simple-python-http-server
+   git clone https://github.com/2series/build-http-server.git
+   cd build-http-server
    ```
 
 ### Running the Server
@@ -60,7 +60,7 @@ The server currently:
 
 ## Roadmap
 
-See the [open issues](https://github.com/yourusername/simple-python-http-server/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/2series/build-http-server/issues) for a list of proposed features (and known issues).
 
 ## Contributing
 
