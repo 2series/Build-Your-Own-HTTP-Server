@@ -1,16 +1,44 @@
-# Simple Python HTTP Server
+# Build Your Own HTTP Server
 
-This project is a basic HTTP server implemented in Python. It's designed as a learning exercise to understand the fundamentals of TCP servers, the HTTP protocol, HTTP headers, HTTP verbs, and handling multiple concurrent connections.
+This project aims to build a custom HTTP server using Python. It's designed as a learning exercise to understand the fundamentals of TCP servers, the HTTP protocol, HTTP headers, HTTP verbs, and handling multiple concurrent connections.
 
 ## Project Overview
 
-The goal of this project is to build a simple HTTP server capable of:
+HTTP is the protocol that powers the web. In this project, we're building an HTTP server capable of:
 
-1. Handling basic GET/POST requests
+1. Handling simple GET/POST requests
 2. Serving files
 3. Managing multiple concurrent connections
 
-## Features
+## Learning Objectives
+
+Through this project, we aim to learn about:
+- TCP servers
+- The HTTP protocol
+- HTTP headers
+- HTTP verbs
+- Handling multiple concurrent connections
+
+## Development Stages
+
+We will follow these stages in developing our HTTP server:
+
+1. Bind to a port
+2. Respond with 200 status code
+3. Extract URL path
+4. Respond with body
+5. Read headers
+6. Handle concurrent connections
+7. Return files
+8. Read request body
+
+After completing these main stages, we'll implement HTTP Compression:
+
+9. Compression headers
+10. Multiple compression schemes
+11. Gzip compression
+
+## Current Features
 
 - [x] Bind to a port
 - [x] Respond with 200 status code
