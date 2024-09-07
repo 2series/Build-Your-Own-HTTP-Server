@@ -32,16 +32,33 @@ def handle_request(client_socket):
     
     # Handle GET requests
     if method == 'GET':
-        file_path = os.path.join(SERVE_DIRECTORY, path.lstrip('/'))
-        if os.path.exists(file_path) and os.path.isfile(file_path):
-            with open(file_path, 'rb') as file:
-                content = file.read()
+        # Debug: Print the requested path
+        print(f"Requested path: {path}")
+        
+        # Check if the path is the root ("/")
+        if path == "/":
+            content = b'Welcome to the root page!'
             status_code = HTTP_OK
-            content_type = CONTENT_TYPE_HTML if file_path.endswith('.html') else CONTENT_TYPE_PLAIN
-        else:
-            content = b'404 Not Found'
-            status_code = HTTP_NOT_FOUND
             content_type = CONTENT_TYPE_PLAIN
+        else:
+            file_path = os.path.join(SERVE_DIRECTORY, path.lstrip('/'))
+            
+            # Debug: Print the full file path
+            print(f"Full file path: {file_path}")
+            
+            if os.path.exists(file_path) and os.path.isfile(file_path):
+                with open(file_path, 'rb') as file:
+                    content = file.read()
+                status_code = HTTP_OK
+                content_type = CONTENT_TYPE_HTML if file_path.endswith('.html') else CONTENT_TYPE_PLAIN
+                # Debug: Print successful file read
+                print(f"File read successfully: {file_path}")
+            else:
+                content = b'404 Not Found'
+                status_code = HTTP_NOT_FOUND
+                content_type = CONTENT_TYPE_PLAIN
+                # Debug: Print file not found
+                print(f"File not found: {file_path}")
     else:
         content = b'Method Not Supported'
         status_code = 405
@@ -66,6 +83,17 @@ def main():
     # Create a server socket
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
     print("Server is running on http://localhost:4221")
+    
+    # Debug: Print the current working directory
+    print(f"Current working directory: {os.getcwd()}")
+    
+    # Debug: Print the full path of the SERVE_DIRECTORY
+    print(f"Full path of SERVE_DIRECTORY: {os.path.abspath(SERVE_DIRECTORY)}")
+    
+    # Debug: List files in the SERVE_DIRECTORY
+    print(f"Files in SERVE_DIRECTORY:")
+    for file in os.listdir(SERVE_DIRECTORY):
+        print(f"  - {file}")
     
     while True:
         # Accept a client connection
